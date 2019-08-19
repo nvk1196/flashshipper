@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<title>Landing &mdash; Free One Page Bootstrap 4 Template by uicookies.com</title>
+		<meta name="description" content="Free Bootstrap 4 Template by uicookies.com">
+		<meta name="keywords" content="Free website templates, Free bootstrap themes, Free template, Free bootstrap, Free website template">
+
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600|Montserrat:200,300,400" rel="stylesheet">
+
+	<link rel="stylesheet" href="assets/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/law-icons/font/flaticon.css">
+
+    <link rel="stylesheet" href="assets/fonts/fontawesome/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/slick-theme.css">
+
+    <link rel="stylesheet" href="assets/css/helpers.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/landing-2.css">
+	<link rel="stylesheet" href="assets/css/custom.css">
+
+	</head>
+	<body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
+	
+    <nav class="navbar navbar-expand-lg navbar-dark pb_navbar pb_scrolled-light" id="pb-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="assets/images/icon/home/light_bolt.png"> Flash Shipper</a>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#probootstrap-navbar" aria-controls="probootstrap-navbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span><i class="ion-navicon"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="probootstrap-navbar">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#section-faq">FAQ</a></li>
+			<li class="nav-item"><a class="nav-link" href="#section-contact">Contact</a></li>
+            <!-- <li class="nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0"><a class="nav-link" href="https://uicookies.com/" target="_blank"><span class="pb_rounded-4 px-4">Get Started</span></a></li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+
+	<!--HOME SECTION-->
+    <section class="pb_cover_v3 overflow-hidden cover-bg-indigo cover-bg-opacity text-left pb_gradient_v1 pb_slant-light" id="section-home">
+      <div class="container">
+	  
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-6">
+            <h2 class="heading mb-3" style="font-size:52px">Smarter way to ship</h2>
+            <div class="sub-heading" align="left">
+              <p class="mb-4">
+				<img src="assets/images/icon/home/pickup.png"> Pick up your item within 20 minutes			
+			  </p>
+              <p class="mb-4">
+			  <img src="assets/images/icon/home/package.png"> Professional package		  
+			  </p>			  
+              <p class="mb-4">
+			  <img src="assets/images/icon/home/ship.png"> Ship through USPS			  
+			  </p>			  
+              <p class="mb-4">
+			  <img src="assets/images/icon/home/tracking_number.png"> Provide tracking number			  
+			  </p>			  
+			  
+            </div>
+          </div>
+          <div class="col-md-1">
+          </div>
+          <div class="col-md-5 relative align-self-center">
+		  
+			<!--1st Form. Pick Up-->
+            <form action="#pickup_form" class="bg-white rounded pb_form_v1" id="pickup_form">
+              <h3 class="mb-4 mt-0 text-center">Enter pickup address</h3>
+              <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Full name">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Address">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="City">
+              </div>
+                <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="State">
+              </div>
+			    <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Zip code">
+              </div>
+              <div class="form-group">	<!--Next Button-->
+                <button onclick="nextForm('PickUpForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </button>
+              </div>
+            </form>
+			
+			<!--2st Form. Return Or Not Question-->
+            <form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="question_form" style="display:none">
+              <h3 class="mb-4 mt-0 text-center">Is this a return item from an online merchandise store with a prepaid label? (Amazon,eBay...)</h3>			  
+              <div class="form-group">	<!--Next Button-->
+                <button onclick="nextForm('QuestionForm_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </button>			  
+                <button onclick="nextForm('QuestionForm_yes')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Yes </button>
+              </div>
+              </form>
+			
+			  
+			<!-- 3th Form (Regular). Choose item size--> <!--new-->
+			<form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="choose_size_form" style="display:none">
+              <h3 class="mb-4 mt-0 text-center">My item is about the same size of a/an...</h3>
+              <h6 class="mb-4 mt-0 text-center" style="font-style:italic;">Just an estimate, no need 100% accuracy.</h6>
+			  
+          <!--    <div class="form-group">			drop down option
+				  <select class="form-control pb_height-50 reverse">
+                    <option value="" selected="">Earbud (smallest)</option>		
+                    <option value="">Smartphone</option>
+                    <option value="">Headphone</option>
+                    <option value="">Tablet</option>
+                    <option value="">PS4/Xbox</option>
+                    <option value="">Laptop (Biggest)</option>
+                  </select>
+				  </div>				  -->
+				  
+					<div class="grid-container">
+					  <div class="item_size"><button class="item_size" onclick="nextForm('ChooseSizeForm')"><img align="center" src="assets/images/icon/home/item_size/earbuds.png"><br><br>Earbud</button></div>
+					  <div class="item_size"><button class="item_size" onclick="nextForm('ChooseSizeForm')"><img align="center" src="assets/images/icon/home/item_size/smartphone.png"><br><br>Smartphone</button></div>
+					  <div class="item_size"><button class="item_size" onclick="nextForm('ChooseSizeForm')"><img align="center" src="assets/images/icon/home/item_size/book.png"><br><br>Book</button></div>   
+					  <div class="item_size"><button class="item_size" onclick="nextForm('ChooseSizeForm')"><img align="center" src="assets/images/icon/home/item_size/headphones.png"><br><br>Headphone</button></div>  
+					  <div class="item_size"><button class="item_size" onclick="nextForm('ChooseSizeForm')"><img align="center" src="assets/images/icon/home/item_size/shoes.png"><br><br>Pair of shoes</button></div>
+					  <div class="item_size"><button class="item_size" onclick="nextForm('ChooseSizeForm')"><img align="center" src="assets/images/icon/home/item_size/laptop.png"><br><br>Laptop</button></div>
+					</div>
+			</form>
+			
+			<!-- 4th Form (Regular). Smaller than shoes/xbox? -->
+			<form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="is_small_form" style="display:none">
+              <h3 class="mb-4 mt-0 text-center">Is this item smaller than a laptop / pair of shoes and below 70lbs? </h3>			  
+              <div class="form-group">	<!--Next Button-->
+                <button onclick="nextForm('IsSmallForm_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </button>			  
+                <button onclick="nextForm('IsSmallForm_yes')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Yes </button>
+              </div>  
+			</form>
+
+			<!-- 4th Form (Regular). Not Small -->
+			<form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="is_not_small_form" style="display:none">
+              <h3 class="mb-4 mt-0 text-center">We are currenty not picking up and packaging item that is bigger than this size or heavier than 70lbs</h3>			  
+			</form>
+			
+			<!-- 5th Form (Regular). Fragile ? -->			
+			<form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="fragile_form" style="display:none">
+              <h3 class="mb-4 mt-0 text-center">Is this item fragile?</h3>			  
+              <div class="form-group">	<!--Next Button-->
+                <button onclick="nextForm('FragileForm_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </button>			  
+                <button onclick="nextForm('FragileForm_yes')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Yes </button>
+              </div>  
+			</form>				
+
+			<!--6rd Form (No). Ship To. Regular Ship-->
+			<form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="shipto_form" style="display:none;">
+              <h3 class="mb-4 mt-0 text-center">Enter ship to address</h3>
+              <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Full name">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Address">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="City">
+              </div>
+                <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="State">
+              </div>
+			  <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Zip code">
+              </div>
+			  <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Note (optional)">
+              </div>			  
+              <div class="form-group">	<!--Next Button-->
+                <button onclick="nextForm('ShipToForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </button>
+              </div>
+            </form>
+			
+			<!-- 1COMMON Form (Regular). Total cost-->
+			<form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="total_cost_form" style="display:none">
+              <h3 class="mb-4 mt-0 text-center">Estimate Total Cost</h3><br>
+			  
+              <label class="mb-4 mt-0 text-left">Pick up fee: </label>
+			  <label class="mb-4 mt-0 text-right">5</label><br>
+			  
+              <label class="mb-4 mt-0 text-left">Fragile item packaging: </label>
+			  <label class="mb-4 mt-0 text-right">2</label><br>	
+			  
+              <label class="mb-4 mt-0 text-left">Shipping fee: </label>
+			  <label class="mb-4 mt-0 text-right">7.9</label><br>
+			  
+              <label class="mb-4 mt-0 text-left" style="font-weight:bold;">Total: 14.9 $</label>		  			  
+              <div class="form-group">	<!--Next Button-->
+                <button onclick="nextForm('TotalCostForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </button>
+              </div>			  
+			</form>							
+			  
+			<!-- 2COMMON Form. Enter Phone Number Form-->
+			  <form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="enter_phone_form" style="display:none">
+              <h3 class="mb-4 mt-0 text-center">Verify phone number</h3>
+              <h6 class="mb-4 mt-0 text-center" style="font-style:italic;">Your phone number will be use for contacting your shipper and receiving tracking number.</h6>
+			  <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Enter your phone number">
+              </div>	
+              <div class="form-group">	<!--Next Button-->
+                <button onclick="nextForm('EnterPhoneForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </button>
+              </div>
+              </form>		
+			  
+			<!-- 3COMMON Form. Verify Phone Number Form-->
+			  <form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="verify_phone_form" style="display:none">
+              <h3 class="mb-4 mt-0 text-center">Verify phone number.</h3>
+			  <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Enter verification code">
+              </div>	
+              <div class="form-group">	<!--Comfirm Button--> <!-- Get all the user input info after click this button-->
+                <button onclick="nextForm('VerifyPhoneForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" style="background-color:#ff2626;border:none;"> Confirm Pick Up </button>
+              </div>
+              </form>
+			  
+			<!-- 4COMMON Form. Final Form-->
+			  <form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="final_form" style="display:none">
+              <h2 class="mb-4 mt-0 text-center" style="color:#007bff">Thank you!</h2>
+              <h3 class="mb-4 mt-0 text-center">Your shipper is on the way. We will send you a confirmation text shortly.</h3>	
+              </form>		
+			  
+			<!---RETURN FORM-->	
+			<!-- 1th Form (Return). Amazon? -->		
+			<form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="amazon_form" style="display:none">
+              <h3 class="mb-4 mt-0 text-center">Is it a return item from Amazon.com?</h3>			  
+              <div class="form-group">	<!--Next Button-->
+                <button onclick="nextForm('Amazon_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </button>			  
+                <button onclick="nextForm('Amazon_yes')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Yes </button>
+              </div>  
+			</form>			  
+
+			<!--2rd Form(Return Amazon). Upload Amazon Return Code. Return Item-->		
+			  <form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="amazon_upload_form" style="display:none">
+              <h5 class="mb-4 mt-0 text-left">Step 1: Choose "The UPS Store Dropoff" option at Amazon return page.</h5> 
+			  <img id="amazon_screenshot" src="assets/images/screenshot/Amazon_return2.png" style="width:100%;max-width:100px">
+			  <label class="mb-4 mt-0 text-left" style="font-style:italic;">Click to zoom</label>
+				<!-- Zoom in picture -->
+				<div id="myModal" class="modal">
+				  <img class="modal-content" id="amazon_screenshot_modal">
+				   <span onclick="document.getElementById(myModal).style.display='none'" class="w3-button w3-display-topright">&times;</span>
+				</div>			  
+			  
+			  
+			  <h5 class="mb-4 mt-0 text-left">Step 2: Upload the QR code Amazon sent you.</h5>
+			    <div class="form-group">
+					<input type="file" class="form-control pb_height-50 reverse">
+                </div>			  
+                <div class="form-group">	<!--Next Button-->
+					<button onclick="nextForm('ReturnAmazonForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </button>
+                </div>
+              </form>	
+
+			<!--2rd Form(Return Normal). Upload Label. Return Item-->		
+			  <form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="upload_label_form" style="display:none">
+              <h3 class="mb-4 mt-0 text-center">Upload return label (prepaid label only)</h3>
+			    <div class="form-group">
+                <input type="file" class="form-control pb_height-50 reverse">
+              </div>	
+              <h3 class="mb-4 mt-0 text-center">Additional document in the package (optional)</h3>
+			    <div class="form-group">
+                <input type="file" class="form-control pb_height-50 reverse">
+              </div>			  
+              <div class="form-group">	<!--Next Button-->
+                <button onclick="nextForm('UploadLabelForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </button>
+              </div>
+              </form>	
+
+			<!-- 3th Form (Return Normal). Repackage? -->		
+			<form action="#pickup_form"" class="bg-white rounded pb_form_v1" id="repackage_form" style="display:none">
+              <h3 class="mb-4 mt-0 text-center">Do you want to repackaging this item?</h3>			  
+              <div class="form-group">	<!--Next Button-->
+                <button onclick="nextForm('Repackage_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </button>	<!--Ship-->		  
+                <button onclick="nextForm('Repackage_yes')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Yes </button>	<!--Go to fragile form-->	
+              </div>  
+			</form>	
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+
+    <!-- FAQ section -->
+    <section class="pb_section bg-light pb_slant-white pb_pb-250" id="section-faq">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-6 text-center mb-5">
+            <h5 class="text-uppercase pb_font-15 mb-2 pb_color-dark-opacity-3 pb_letter-spacing-2"><strong>FAQ</strong></h5>
+            <h2>Frequently Ask Questions</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md">
+            <div id="pb_faq" class="pb_accordion" data-children=".item">
+              <div class="item">
+                <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq1" aria-expanded="true" aria-controls="pb_faq1" class="pb_font-22 py-4">What do we do?</a>
+                <div id="pb_faq1" class="collapse show" role="tabpanel">
+                  <div class="py-3">
+                  <p>Flash Shipper is a complete shipping service. We will pick up, package, and ship your item with just a few clicks. </p>
+				  <p>Pick up time is around 20 minutes. All package come with USPS tracking number and insured.</p>
+                  </div>
+				  <!--For packing fragile item, we use corrugated box (32 ECT) that can hold up to 200 lbs to keep your item extra safe-->
+                </div>
+              </div>
+              <div class="item">
+                <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq2" aria-expanded="false" aria-controls="pb_faq2" class="pb_font-22 py-4">How can I ship many items as once?</a>
+                <div id="pb_faq2" class="collapse" role="tabpanel">
+                  <div class="py-3">
+                    <p>We are currently not picking up and packaging many item at once. However, we could treat these items as 1 large item in term of size and weight.</p> 
+					<p>If you are asked to select the size for your item, you will need to select the size of these items as they are bundle together. Total weight of these items can not exceed 70 lbs.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq3" aria-expanded="false" aria-controls="pb_faq3" class="pb_font-22 py-4">My store didn't give me a shipping label.</a>
+                <div id="pb_faq3" class="collapse" role="tabpanel">
+                  <div class="py-3">
+                    <p>You could choose to ship your item in a regular way.</p> 
+					<p>Select "No" when being asked "Is this a return item from an online merchandise store with a prepaid label?". Enter the ship to address and ship your item like a regular item.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq4" aria-expanded="false" aria-controls="pb_faq4" class="pb_font-22 py-4">How much does it cost?</a>
+                <div id="pb_faq4" class="collapse" role="tabpanel">
+                  <div class="py-3">
+                    <p>Pick up and regular package fee is 5$. </p>
+					<p>Fragile item packaging is 2$ extra. </p>
+					<p>Shipping cost depend on your item's size range from 8-20$.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="item">
+                <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq5" aria-expanded="false" aria-controls="pb_faq5" class="pb_font-22 py-4">Stuff?</a>
+                <div id="pb_faq5" class="collapse" role="tabpanel">
+                  <div class="py-3">
+                    <p>On her way she met a copy. nnd" and the Ld and return to its own, safe country. </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ENDs ection -->
+
+    <!-- ABOUT section -->
+    <section class="pb_section pb_slant-light" id="section-contact">
+      <div class="container">
+        <div class="row justify-content-center mb-5" id="test123">
+          <div class="col-md-6 text-center mb-5">
+            <h5 class="text-uppercase pb_font-15 mb-2 pb_color-dark-opacity-3 pb_letter-spacing-2"><strong>Contact Us</strong></h5>
+            <h3>123 Street, Austin, Texas 34321</h3>
+            <h3> nvk2807@gmail.com</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+	
+    <!-- insert code here -->
+    <!-- insert code here -->
+
+
+
+   
+
+    <footer class="pb_footer bg-light" role="contentinfo">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col">
+            <ul class="list-inline">
+              <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <p class="pb_font-14">&copy; 2019. All Rights Reserved. <br>  <a href="https://uicookies.com/bootstrap-html-templates/">Bootstrap Templates</a> by uiCookies</p>
+           <!-- <p class="pb_font-14">Demo Images: <a href="https://unsplash.com/" target="_blank" rel="nofollow">Unsplash</a></p> -->
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- loader -->
+    <div id="pb_loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#1d82ff"/></svg></div>
+
+
+
+    <script src="assets/js/jquery.min.js"></script>
+
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/jquery.mb.YTPlayer.min.js"></script>
+
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+
+    <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/custom.js"></script>
+
+	</body>
+</html>
