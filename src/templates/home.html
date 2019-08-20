@@ -11,7 +11,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600|Montserrat:200,300,400" rel="stylesheet">
 
-	<link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+	  <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'fonts/ionicons/css/ionicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'fonts/law-icons/font/flaticon.css' %}">
 
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{% static 'css/helpers.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/landing-2.css' %}">
-	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 
 	</head>
 	<body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
@@ -73,24 +73,24 @@
           <div class="col-md-1">
           </div>
           <div class="col-md-5 relative align-self-center">
-    <form method="post">		  
+    <form method="POST" onsubmit="nextForm('VerifyPhoneForm')"> {% csrf_token %}		  
 			<!--1st Form. Pick Up-->
             <div action="#pickup_form" class="bg-white rounded pb_form_v1" id="pickup_form">
               <h3 class="mb-4 mt-0 text-center">Enter pickup address</h3>
               <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Full name">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Full name" name="pick_up_full_name">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Address">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Address" name="pick_up_address">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="City">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="City" name="pick_up_city">
               </div>
                 <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="State">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="State" name="pick_up_state">
               </div>
 			    <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Zip code">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Zip code" name="pick_up_zip">
               </div>
               <div class="form-group">	<!--Next Button-->
                 <span onclick="nextForm('PickUpForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </span>
@@ -123,14 +123,15 @@
                   </select>
 				  </div>				  -->
 				  
-					<div class="grid-container">
-					  <div class="item_size"><span class="item_size" onclick="nextForm('ChooseSizeForm')"><img align="center" src="{% static 'images/icon/home/item_size/earbuds.png' %}"><br><br>Earbud</span></div>
-					  <div class="item_size"><span class="item_size" onclick="nextForm('ChooseSizeForm')"><img align="center" src="{% static 'images/icon/home/item_size/smartphone.png' %}"><br><br>Smartphone</span></div>
-					  <div class="item_size"><span class="item_size" onclick="nextForm('ChooseSizeForm')"><img align="center" src="{% static 'images/icon/home/item_size/book.png' %}"><br><br>Book</span></div>   
-					  <div class="item_size"><span class="item_size" onclick="nextForm('ChooseSizeForm')"><img align="center" src="{% static 'images/icon/home/item_size/headphones.png' %}"><br><br>Headphone</span></div>  
-					  <div class="item_size"><span class="item_size" onclick="nextForm('ChooseSizeForm')"><img align="center" src="{% static 'images/icon/home/item_size/shoes.png' %}"><br><br>Pair of shoes</span></div>
-					  <div class="item_size"><span class="item_size" onclick="nextForm('ChooseSizeForm')"><img align="center" src="{% static 'images/icon/home/item_size/laptop.png' %}"><br><br>Laptop</span></div>
+			<div class="grid-container">
+					  <label class="item_size"> <input type="radio" onclick="nextForm('ChooseSizeForm')" name="item_size" value="tiny"><img align="center" src="{% static 'images/icon/home/item_size/earbuds.png' %}"><br><br>Earbud<span class="checkmark"></label>
+					  <label class="item_size" onclick="nextForm('ChooseSizeForm')" > <input type="radio" name="item_size" value="small"><img align="center" src="{% static 'images/icon/home/item_size/smartphone.png' %}"><br><br>Smartphone</label>
+					  <label class="item_size" onclick="nextForm('ChooseSizeForm')" > <input type="radio" name="item_size" value="medium_side"><img align="center" src="{% static 'images/icon/home/item_size/book.png' %}"><br><br>Book</label>   
+					  <label class="item_size" onclick="nextForm('ChooseSizeForm')" > <input type="radio" name="item_size" value="medium_normal"><img align="center" src="{% static 'images/icon/home/item_size/headphones.png' %}"><br><br>Headphone</label>  
+					  <label class="item_size" onclick="nextForm('ChooseSizeForm')" > <input type="radio" name="item_size" value="large_normal"><img align="center" src="{% static 'images/icon/home/item_size/shoes.png' %}"><br><br>Pair of shoes</label>
+					  <label class="item_size" onclick="nextForm('ChooseSizeForm')" > <input type="radio" name="item_size" value="large_gamebox"><img align="center" src="{% static 'images/icon/home/item_size/laptop.png' %}"><br><br>Laptop</label>
 					</div>
+          <input type="text" id="est_item_size" style="display:none" name="est_item_size" value=""> <!-- For Django -->
 			</div>
 			
 			<!-- 4th Form (Regular). Smaller than shoes/xbox? -->
@@ -151,8 +152,9 @@
 			<div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="fragile_form" style="display:none">
               <h3 class="mb-4 mt-0 text-center">Is this item fragile?</h3>			  
               <div class="form-group">	<!--Next Button-->
-                <span onclick="nextForm('FragileForm_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </span>			  
-                <span onclick="nextForm('FragileForm_yes')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Yes </span>
+                <span onclick="nextForm('FragileForm_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" name="is_fragile" value="True"> No </span>			  
+                <span onclick="nextForm('FragileForm_yes')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" name="is_fragile" value="False"> Yes </span>
+                <input type="text" id="fragile" style="display:none" name="fragile" value="False"> <!-- For Django -->
               </div>  
 			</div>				
 
@@ -160,22 +162,22 @@
 			<div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="shipto_form" style="display:none;">
               <h3 class="mb-4 mt-0 text-center">Enter ship to address</h3>
               <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Full name">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Full name" name="ship_to_full_name">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Address">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Address" name="ship_to_address">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="City">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="City" name="ship_to_city">
               </div>
                 <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="State">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="State" name="ship_to_state">
               </div>
 			  <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Zip code">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Zip code" name="ship_to_zip">
               </div>
 			  <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Note (optional)">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Note (optional)" name="ship_to_note">
               </div>			  
               <div class="form-group">	<!--Next Button-->
                 <span onclick="nextForm('ShipToForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </span>
@@ -184,18 +186,18 @@
 			
 			<!-- 1COMMON Form (Regular). Total cost-->
 			<div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="total_cost_form" style="display:none">
-              <h3 class="mb-4 mt-0 text-center">Estimate Total Cost</h3><br>
-			  
+              <h3 class="mb-4 mt-0 text-center">Estimate Total Cost</h3><br>		  
               <label class="mb-4 mt-0 text-left">Pick up fee: </label>
-			  <label class="mb-4 mt-0 text-right">5</label><br>
-			  
+			  <label class="mb-4 mt-0 text-right" id="pick_up_fee">0</label><br>	
+              <label class="mb-4 mt-0 text-left">Package fee: </label>
+        <label class="mb-4 mt-0 text-right" id="package_fee">0</label><br>	  
               <label class="mb-4 mt-0 text-left">Fragile item packaging: </label>
-			  <label class="mb-4 mt-0 text-right">2</label><br>	
-			  
+			  <label class="mb-4 mt-0 text-right" id="fragile_fee">0</label><br>			  
               <label class="mb-4 mt-0 text-left">Shipping fee: </label>
-			  <label class="mb-4 mt-0 text-right">7.9</label><br>
-			  
-              <label class="mb-4 mt-0 text-left" style="font-weight:bold;">Total: 14.9 $</label>		  			  
+			  <label class="mb-4 mt-0 text-right" id="shipping_fee">0</label><br>
+              <label class="mb-4 mt-0 text-left" style="font-weight:bold;font-size:22px;" id="total_cost" name="total_cost">Err</label>		  
+              <input type="text" id="cost" style="display:none" name="cost" value="0"> <!-- For Django -->
+
               <div class="form-group">	<!--Next Button-->
                 <span onclick="nextForm('TotalCostForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </span>
               </div>			  
@@ -220,7 +222,8 @@
                 <input type="text" class="form-control pb_height-50 reverse" placeholder="Enter verification code">
               </div>	
               <div class="form-group">	<!--Comfirm Button--> <!-- Get all the user input info after click this button-->
-                <button onclick="nextForm('VerifyPhoneForm');return false;" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" style="background-color:#ff2626;border:none;"> Confirm Pick Up </button>
+                <input type="submit" value="Confirm Pick Up" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" style="background-color:#ff2626;border:none;">
+               <!-- <input type"=submit" value="End Click">-->
               </div>
               </div>
 			  
@@ -254,7 +257,7 @@
 			  
 			  <h5 class="mb-4 mt-0 text-left">Step 2: Upload the QR code Amazon sent you.</h5>
 			    <div class="form-group">
-					<input type="file" class="form-control pb_height-50 reverse">
+					<input type="file" class="form-control pb_height-50 reverse" id="amazon_QR">
                 </div>			  
                 <div class="form-group">	<!--Next Button-->
 					<span onclick="nextForm('ReturnAmazonForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </span>
@@ -265,11 +268,11 @@
 			  <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="upload_label_form" style="display:none">
               <h3 class="mb-4 mt-0 text-center">Upload return label (prepaid label only)</h3>
 			    <div class="form-group">
-                <input type="file" class="form-control pb_height-50 reverse">
+                <input type="file" class="form-control pb_height-50 reverse" id="return_label_1">
               </div>	
               <h3 class="mb-4 mt-0 text-center">Additional document in the package (optional)</h3>
 			    <div class="form-group">
-                <input type="file" class="form-control pb_height-50 reverse">
+                <input type="file" class="form-control pb_height-50 reverse" id="return_label_2">
               </div>			  
               <div class="form-group">	<!--Next Button-->
                 <span onclick="nextForm('UploadLabelForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </span>
@@ -415,7 +418,6 @@
     <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
 
     <script src="{% static 'js/main.js' %}"></script>
-
     <script src="{% static 'js/custom.js' %}"></script>
 
 	</body>

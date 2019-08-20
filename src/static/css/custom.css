@@ -27,6 +27,15 @@
   border-radius: 0.5rem
 }
 
+/* Hide the browser's default checkbox */
+.item_size input {
+  position: absolute;
+  opacity: 0;
+  cursor: progress;
+  height: 0;
+  width: 0;
+}
+
 /*this for image zoom amazon_upload_form*/
 #myImg {
   border-radius: 5px;

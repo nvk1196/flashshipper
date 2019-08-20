@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Request(models.Model):
+class Customer_Request(models.Model):
 	#General info	
 	request_time		= models.DateTimeField(auto_now_add=True)	
 
@@ -17,11 +17,11 @@ class Request(models.Model):
 
 	#Amazon return
 	#amazon_return		= models.BooleanField(blank=False)
-	amazon_QR			= models.FileField(blank=True)	#case 1: Amazon return
+	amazon_QR			= models.FileField(blank=True, null=True)	#case 1: Amazon return
 
 	#Regular return
-	return_label_1		= models.FileField(blank=True)	#case 2: Regular return
-	return_label_2		= models.FileField(blank=True)
+	return_label_1		= models.FileField(blank=True, null=True)	#case 2: Regular return
+	return_label_2		= models.FileField(blank=True, null=True)
 	#repackage			= models.BooleanField(blank=False)
 
 	#Package
@@ -34,9 +34,10 @@ class Request(models.Model):
 	ship_to_city		= models.CharField(max_length=50, blank=True)
 	ship_to_state 		= models.CharField(max_length=50, blank=True)
 	ship_to_zip			= models.CharField(max_length=50, blank=True)
+	ship_to_note		= models.CharField(max_length=50, blank=True)
 
-	#Estimate cost
-	est_cost 			= models.DecimalField(decimal_places=3, max_digits=10000)
+	#how much customer should pay
+	cost 			= models.DecimalField(decimal_places=3, max_digits=10000)
 
 
 class Shipper(models.Model):
@@ -63,6 +64,6 @@ class Packager(models.Model):
 
 
 class Overview(models.Model):
-	Request  			= models.ForeignKey("Request", on_delete=models.CASCADE, blank=True, null=True)
+	Customer_Request 	= models.ForeignKey("Customer_Request", on_delete=models.CASCADE, blank=True, null=True)
 	Shipper  			= models.ForeignKey("Shipper", on_delete=models.CASCADE, blank=True, null=True)
 	Packager  			= models.ForeignKey("Packager", on_delete=models.CASCADE, blank=True, null=True)
