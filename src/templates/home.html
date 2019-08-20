@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<title>Landing &mdash; Free One Page Bootstrap 4 Template by uicookies.com</title>
+		<title>Flash Shipper &mdash; The Uber for shipping</title>
 		<meta name="description" content="Free Bootstrap 4 Template by uicookies.com">
 		<meta name="keywords" content="Free website templates, Free bootstrap themes, Free template, Free bootstrap, Free website template">
 
@@ -73,7 +73,7 @@
           <div class="col-md-1">
           </div>
           <div class="col-md-5 relative align-self-center">
-    <form method="POST" onsubmit="nextForm('VerifyPhoneForm')"> {% csrf_token %}		  
+    <form method="POST" id="CustomerRequest"> {% csrf_token %}		  
 			<!--1st Form. Pick Up-->
             <div action="#pickup_form" class="bg-white rounded pb_form_v1" id="pickup_form">
               <h3 class="mb-4 mt-0 text-center">Enter pickup address</h3>
@@ -222,16 +222,16 @@
                 <input type="text" class="form-control pb_height-50 reverse" placeholder="Enter verification code">
               </div>	
               <div class="form-group">	<!--Comfirm Button--> <!-- Get all the user input info after click this button-->
-                <input type="submit" value="Confirm Pick Up" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" style="background-color:#ff2626;border:none;">
+                <span onclick="nextForm('SubmitForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" style="background-color:#ff2626;border:none;"> Confirm Pick Up </span>
                <!-- <input type"=submit" value="End Click">-->
               </div>
               </div>
 			  
-			<!-- 4COMMON Form. Final Form-->
+			<!-- 4COMMON Form. Final Form. OLD STUFF
 			  <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="final_form" style="display:none">
               <h2 class="mb-4 mt-0 text-center" style="color:#007bff">Thank you!</h2>
               <h3 class="mb-4 mt-0 text-center">Your shipper is on the way. We will send you a confirmation text shortly.</h3>	
-              </div>		
+        </div>		-->
 			  
 			<!---RETURN FORM-->	
 			<!-- 1th Form (Return). Amazon? -->		

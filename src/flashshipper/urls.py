@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from Overview.views import home
+from Overview.views import home, user_message
 
 urlpatterns = [
 	path('', home),
+	path('user_message.html', user_message),
     path('admin/', admin.site.urls),
 ]

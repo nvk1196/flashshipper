@@ -48,3 +48,7 @@ def home (request):
 		CustomerRequest.save()
 
 	return render(request, 'home.html')
+
+def user_message (request):
+	return render(request, 'user_message.html')
+

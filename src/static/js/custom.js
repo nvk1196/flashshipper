@@ -1,3 +1,8 @@
+//prevent resubmit on refresh
+if ( window.history.replaceState ) 
+{
+    window.history.replaceState( null, null, window.location.href );
+}
 	//---Main. Home----
 var need_package = new Boolean(false);
 var need_fragile = new Boolean(false);
@@ -118,11 +123,20 @@ function nextForm(current_form) {
 		document.getElementById("enter_phone_form").style.display = "none";
 		document.getElementById("verify_phone_form").style.display = "block";
 	}	
-		else if (current_form == "VerifyPhoneForm")
+		else if (current_form == "SubmitForm")
 	{	
-		document.getElementById("verify_phone_form").style.display = "none";
-		document.getElementById("final_form").style.display = "block";
-			//event.preventDefault();
+		//document.getElementById("verify_phone_form").style.display = "none";
+		//document.getElementById("final_form").style.display = "block";
+
+		//if(phone_phone_verification = correct) -> submit this form
+		var form = document.getElementById("CustomerRequest");	//submit this form
+		form.submit();
+		form.reset();
+		window.location.href = "/user_message.html";
+
+
+
+
 
 	}
 	
