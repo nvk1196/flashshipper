@@ -39,6 +39,8 @@ class Customer_Request(models.Model):
 	#how much customer should pay
 	cost 			= models.DecimalField(decimal_places=3, max_digits=10000)
 
+	#verify customer phone
+	#customer_phone	= models.CharField(max_length=50, blank=True, null=True)
 
 class Shipper(models.Model):
 	is_picked_up	= models.BooleanField(default=False)					#this trigger to create this object instance
