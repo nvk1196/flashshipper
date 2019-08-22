@@ -21,8 +21,8 @@ if ( window.history.replaceState )
 			document.getElementById("pick_up_zip").value == "")
 			{document.getElementById("empty_field_pick_up").style.display = "block"; return false;}
 
-	document.getElementById("pickup_form").style.display = "none";
-	document.getElementById("question_form").style.display = "block";
+		document.getElementById("pickup_form").style.display = "none";
+		document.getElementById("question_form").style.display = "block";
 	}
 //Return
 	else if (current_form == "QuestionForm_yes")	//it is a return
@@ -155,21 +155,21 @@ if ( window.history.replaceState )
 		document.getElementById("shipto_form").style.display = "block";		
 	}
 	else if (current_form == "ShipToForm")
-		{	
-			if (document.getElementById("ship_to_full_name").value == "" ||
+	{	
+		if (document.getElementById("ship_to_full_name").value == "" ||
 			document.getElementById("ship_to_address").value == "" ||
 			document.getElementById("ship_to_state").value == "" ||
 			document.getElementById("ship_to_city").value == "" ||
 			document.getElementById("ship_to_zip").value == "")
 			{document.getElementById("empty_field_ship_to").style.display = "block"; return false;}
 
-			need_package = true;
-			document.getElementById("shipto_form").style.display = "none";
-			document.getElementById("is_small_form").style.display = "block";
+		need_package = true;
+		document.getElementById("shipto_form").style.display = "none";
+		document.getElementById("is_small_form").style.display = "block";
 
-		}
+	}
 
-		}
+}
 	//---Calculate total cost
 	function cal_total_cost(){
 		var total_cost = 0.0; 
