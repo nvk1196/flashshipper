@@ -16,10 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from Overview.views import home, user_message
+from Overview.views import home, create_request, verify_phone_number
+#from Overview.views import new_page 
+
 
 urlpatterns = [
 	path('', home),
-	path('user_message.html', user_message),
+    path('create_request', create_request),
+    path('verify_phone_number', verify_phone_number),
+	#path('new_page.html', new_page),
     path('admin/', admin.site.urls),
 ]

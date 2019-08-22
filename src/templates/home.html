@@ -73,24 +73,24 @@
           <div class="col-md-1">
           </div>
           <div class="col-md-5 relative align-self-center">
-    <form method="POST" id="CustomerRequest"> {% csrf_token %}		  
+    <form method="POST" id="CustomerRequest" name="CustomerRequest"> {% csrf_token %}		  
 			<!--1st Form. Pick Up-->
             <div action="#pickup_form" class="bg-white rounded pb_form_v1" id="pickup_form">
               <h3 class="mb-4 mt-0 text-center">Enter pickup address</h3>
               <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Full name" name="pick_up_full_name">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Full name" id="pick_up_full_name" name="pick_up_full_name">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Address" name="pick_up_address">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Address" id="pick_up_address" name="pick_up_address">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="City" name="pick_up_city">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="City" id="pick_up_city" name="pick_up_city">
               </div>
                 <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="State" name="pick_up_state">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="State" id="pick_up_state" name="pick_up_state">
               </div>
 			    <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Zip code" name="pick_up_zip">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Zip code" id="pick_up_zip" name="pick_up_zip">
               </div>
               <div class="form-group">	<!--Next Button-->
                 <span onclick="nextForm('PickUpForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </span>
@@ -162,22 +162,22 @@
 			<div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="shipto_form" style="display:none;">
               <h3 class="mb-4 mt-0 text-center">Enter ship to address</h3>
               <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Full name" name="ship_to_full_name">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Full name" id="ship_to_full_name" name="ship_to_full_name">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Address" name="ship_to_address">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Address" id="ship_to_address" name="ship_to_address">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="City" name="ship_to_city">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="City" id="ship_to_city" name="ship_to_city">
               </div>
                 <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="State" name="ship_to_state">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="State"id="ship_to_state"  name="ship_to_state">
               </div>
 			  <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Zip code" name="ship_to_zip">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Zip code" id="ship_to_zip" name="ship_to_zip">
               </div>
 			  <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Note (optional)" name="ship_to_note">
+                <input type="text" class="form-control pb_height-50 reverse" placeholder="Note (optional)" id="ship_to_note" name="ship_to_note">
               </div>			  
               <div class="form-group">	<!--Next Button-->
                 <span onclick="nextForm('ShipToForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </span>
@@ -203,35 +203,24 @@
               </div>			  
 			</div>							
 			  
-			<!-- 2COMMON Form. Enter Phone Number Form-->
-			  <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="enter_phone_form" style="display:none">
-              <h3 class="mb-4 mt-0 text-center">Verify phone number</h3>
-              <h6 class="mb-4 mt-0 text-center" style="font-style:italic;">Your phone number will be use for contacting your shipper and receiving tracking number.</h6>
-			  <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Enter your phone number">
-              </div>	
-              <div class="form-group">	<!--Next Button-->
-                <span onclick="nextForm('EnterPhoneForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </span>
-              </div>
-              </div>		
-			  
+
 			<!-- 3COMMON Form. Verify Phone Number Form-->
 			  <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="verify_phone_form" style="display:none">
               <h3 class="mb-4 mt-0 text-center">Verify phone number.</h3>
 			  <div class="form-group">
-                <input type="text" class="form-control pb_height-50 reverse" placeholder="Enter verification code">
+                <input type="text" class="form-control pb_height-50 reverse" id="verify_code" name="verify_code" placeholder="Enter verification code">
               </div>	
-              <div class="form-group">	<!--Comfirm Button--> <!-- Get all the user input info after click this button-->
-                <span onclick="nextForm('SubmitForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" style="background-color:#ff2626;border:none;"> Confirm Pick Up </span>
+              <div class="form-group">	<!--Comfirm Button--> <!-- Verify Phone, then get all the user input and save to db after click this button-->
+                <input type="submit" onclick="nextForm('SubmitForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" style="background-color:#ff2626;border:none;" value="Confirm Pick Up"> 
                <!-- <input type"=submit" value="End Click">-->
               </div>
               </div>
 			  
-			<!-- 4COMMON Form. Final Form. OLD STUFF
+			<!-- 4COMMON Form. Final Form-->
 			  <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="final_form" style="display:none">
               <h2 class="mb-4 mt-0 text-center" style="color:#007bff">Thank you!</h2>
               <h3 class="mb-4 mt-0 text-center">Your shipper is on the way. We will send you a confirmation text shortly.</h3>	
-        </div>		-->
+        </div>		
 			  
 			<!---RETURN FORM-->	
 			<!-- 1th Form (Return). Amazon? -->		
@@ -288,6 +277,20 @@
               </div>  
 			</div>	
     </form>
+          <!-- 2COMMON Form. Enter Phone Number Form-->
+      <form method="POST" id="VerifyPhoneNumber" name="VerifyPhoneNumber"> <!-- {% csrf_token %} -->
+        <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="enter_phone_form" style="display:none">
+              <h3 class="mb-4 mt-0 text-center">Verify phone number</h3>
+              <h6 class="mb-4 mt-0 text-center" style="font-style:italic;">Your phone number will be use for contacting your shipper and receiving tracking number.</h6>
+        <div class="form-group">
+                <input type="text" class="form-control pb_height-50 reverse" id="phone_number" name="phone_number" placeholder="Enter your phone number">
+              </div>  
+              <div class="form-group">  <!--Next Button-->
+                  <input type="submit" onclick="nextForm('EnterPhoneForm')" value="Next" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue">
+          
+              </div>
+              </div>    
+       </form>
           </div>
         </div>
       </div>

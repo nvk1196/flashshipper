@@ -6,11 +6,11 @@ class Customer_Request(models.Model):
 	request_time		= models.DateTimeField(auto_now_add=True)	
 
 	#Pickup address
-	pick_up_full_name	= models.CharField(max_length=150, blank=False)
-	pick_up_address		= models.CharField(max_length=150, blank=False)
-	pick_up_city		= models.CharField(max_length=100, blank=False)
-	pick_up_state 		= models.CharField(max_length=100, blank=False)
-	pick_up_zip			= models.CharField(max_length=100, blank=False)
+	pick_up_full_name	= models.CharField(max_length=150, blank=False, null=True)
+	pick_up_address		= models.CharField(max_length=150, blank=False, null=True)
+	pick_up_city		= models.CharField(max_length=100, blank=False, null=True)
+	pick_up_state 		= models.CharField(max_length=100, blank=False, null=True)
+	pick_up_zip			= models.CharField(max_length=100, blank=False, null=True)
 
 	#Return item?
 	#return_item			= models.BooleanField(blank=False)
@@ -29,19 +29,19 @@ class Customer_Request(models.Model):
 	fragile				= models.BooleanField(blank=True)
 
 	#Regular Ship -> Ship to address
-	ship_to_full_name	= models.CharField(max_length=150, blank=True)	#case 4: Regular ship
-	ship_to_address		= models.CharField(max_length=150, blank=True)
-	ship_to_city		= models.CharField(max_length=50, blank=True)
-	ship_to_state 		= models.CharField(max_length=50, blank=True)
-	ship_to_zip			= models.CharField(max_length=50, blank=True)
-	ship_to_note		= models.CharField(max_length=50, blank=True)
+	ship_to_full_name	= models.CharField(max_length=150, blank=True, null=True)	#case 4: Regular ship
+	ship_to_address		= models.CharField(max_length=150, blank=True, null=True)
+	ship_to_city		= models.CharField(max_length=50, blank=True, null=True)
+	ship_to_state 		= models.CharField(max_length=50, blank=True, null=True)
+	ship_to_zip			= models.CharField(max_length=50, blank=True, null=True)
+	ship_to_note		= models.CharField(max_length=50, blank=True, null=True)
 
 	#how much customer should pay
-	cost 			= models.DecimalField(decimal_places=3, max_digits=10000)
+	cost 	 			= models.DecimalField(decimal_places=2, max_digits=10000)
 
 	#verify customer phone
-	#customer_phone	= models.CharField(max_length=50, blank=True, null=True)
-
+	phone_number		= models.CharField(max_length=50, blank=True, null=True)
+	verify_code 		= models.CharField(max_length=10, blank=True, null=True)
 class Shipper(models.Model):
 	is_picked_up	= models.BooleanField(default=False)					#this trigger to create this object instance
 	pickup_time 	= models.DateTimeField(auto_now_add=True)	

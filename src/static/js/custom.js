@@ -125,14 +125,14 @@ function nextForm(current_form) {
 	}	
 		else if (current_form == "SubmitForm")
 	{	
-		//document.getElementById("verify_phone_form").style.display = "none";
-		//document.getElementById("final_form").style.display = "block";
+		document.getElementById("verify_phone_form").style.display = "none";
+		document.getElementById("final_form").style.display = "block";
 
 		//if(phone_phone_verification = correct) -> submit this form
-		var form = document.getElementById("CustomerRequest");	//submit this form
-		form.submit();
-		form.reset();
-		window.location.href = "/user_message.html";
+		// var form = document.getElementById("CustomerRequest");	//submit this form
+		// form.submit();
+		// form.reset();
+		// window.location.href = "/user_message.html";
 
 
 
@@ -158,7 +158,7 @@ function nextForm(current_form) {
 
 
 }
-
+	//---Calculate total cost
 	function cal_total_cost(){
 	var total_cost = 0.0; 
 	var pick_up_fee = 4; 
@@ -192,6 +192,60 @@ function nextForm(current_form) {
 
 	document.getElementById("cost").value = total_cost;		//set input value for cost for django to pull	
 	}
+
+//Send 4 digit code for phone verify without refresh. Guide: https://www.youtube.com/watch?v=KgnPSmrQrXI
+var temp_phone
+$(document).on('submit', '#VerifyPhoneNumber', function(e){
+	e.preventDefault();
+	$.ajax({
+			type:'POST',
+			url:'/verify_phone_number',
+			data:{
+				phone_number:$('#phone_number').val(),
+				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+			},
+			success:function(){
+				temp_phone = $('#phone_number').val();
+				//alert("Sent text sms " + temp_phone);
+			}
+		});
+});
+//--Submit form to Django without reload
+$(document).on('submit', '#CustomerRequest', function(e){
+	e.preventDefault();
+	$.ajax({
+			type:'POST',
+			url:'/create_request',
+			data:{
+				pick_up_full_name:$('#pick_up_full_name').val(),	//This stuff will pass data from html-> views.py
+				pick_up_address:$('#pick_up_address').val(),
+				pick_up_city:$('#pick_up_city').val(),
+				pick_up_state:$('#pick_up_state').val(),
+				pick_up_zip:$('#pick_up_zip').val(),
+				amazon_QR:$('#amazon_QR').val(),
+				return_label_1:$('#return_label_1').val(),
+				return_label_2:$('#return_label_2').val(),
+				est_item_size:$('#est_item_size').val(),
+				fragile:$('#fragile').val(),
+				ship_to_full_name:$('#ship_to_full_name').val(),
+				ship_to_address:$('#ship_to_address').val(),
+				ship_to_city:$('#ship_to_city').val(),
+				ship_to_state:$('#ship_to_state').val(),
+				ship_to_zip:$('#ship_to_zip').val(),
+				ship_to_note:$('#ship_to_note').val(),
+				cost:$('#cost').val(),
+				phone_number:temp_phone,
+				verify_code:$('#verify_code').val(),
+				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+			},
+			success:function(){
+				//alert("Created new request " + temp_phone);
+				//$('#phone_number').val('temp_phone');
+			}
+		});
+});		
+
+	
 
 
 //-----Zoom picture on amazon upload form-----
