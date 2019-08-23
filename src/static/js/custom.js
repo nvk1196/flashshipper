@@ -136,8 +136,7 @@ if ( window.history.replaceState )
 	{	
 		if (document.getElementById("verify_code").value == "")
 			{document.getElementById("empty_field_enter_code").style.display = "block"; return false;}
-		document.getElementById("verify_phone_form").style.display = "none";
-		document.getElementById("final_form").style.display = "block";
+
 
 		//if(phone_phone_verification = correct) -> submit this form
 		// var form = document.getElementById("CustomerRequest");	//submit this form
@@ -161,7 +160,7 @@ if ( window.history.replaceState )
 			document.getElementById("ship_to_state").value == "" ||
 			document.getElementById("ship_to_city").value == "" ||
 			document.getElementById("ship_to_zip").value == "")
-			{document.getElementById("empty_field_ship_to").style.display = "block"; return false;}
+			{document.getElementById("empty_field_ship_to").style.display = "block"; return false;} //empty field error checking
 
 		need_package = true;
 		document.getElementById("shipto_form").style.display = "none";
@@ -253,14 +252,22 @@ $(document).on('submit', '#CustomerRequest', function(e){
 			},
 			success:function(data){
 				var response = JSON.parse(data)
+				//if user input verification wrong -> error msg and stay in same screen
 				if (response["message"]==false) {
-					alert("Phone number verification failed!");
+					document.getElementById("verify_phone_form").style.display = "block";
+					document.getElementById("empty_field_enter_code").style.display = "block";
+					document.getElementById("final_form").style.display = "none";
+					//return false;
 					// make sure this will loop the phone number ajax function again and again
+				}
+				//if user input verification correct -> next screen
+				else if (response["message"]==true) {
+					document.getElementById("verify_phone_form").style.display = "none";
+					document.getElementById("final_form").style.display = "block";
 				}
 			}
 		});
 });
-
 
 
 
