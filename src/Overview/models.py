@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Customer_Request(models.Model):
 	#General info	
 	request_time		= models.DateTimeField(auto_now_add=True)	
@@ -17,11 +16,11 @@ class Customer_Request(models.Model):
 
 	#Amazon return
 	#amazon_return		= models.BooleanField(blank=False)
-	amazon_QR			= models.FileField(blank=True, null=True)	#case 1: Amazon return
+	amazon_QR			= models.FileField(blank=True, null=True, upload_to='amazon_QR/%y/%m/%d')	#case 1: Amazon return
 
 	#Regular return
-	return_label_1		= models.FileField(blank=True, null=True)	#case 2: Regular return
-	return_label_2		= models.FileField(blank=True, null=True)
+	return_label_1		= models.FileField(blank=True, null=True, upload_to='return_label/%y/%m/%d')	#case 2: Regular return
+	return_label_2		= models.FileField(blank=True, null=True, upload_to='return_label/%y/%m/%d')
 	#repackage			= models.BooleanField(blank=False)
 
 	#Package

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Flash Shipper &mdash; The Uber for shipping</title>
@@ -31,7 +31,7 @@
 
 </head>
 <body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
-	
+  
   <nav class="navbar navbar-expand-lg navbar-dark pb_navbar pb_scrolled-light" id="pb-navbar">
     <div class="container">
       <a class="navbar-brand" href="index.html"><img src="{% static 'images/icon/home/light_bolt.png' %}"> Flash Shipper</a>
@@ -59,24 +59,24 @@
           <h2 class="heading mb-3" style="font-size:52px">Smarter way to ship</h2>
           <div class="sub-heading" align="left">
             <p class="mb-4">
-              <img src="{% static 'images/icon/home/pickup.png' %}"> Pick up your item within 20 minutes			
+              <img src="{% static 'images/icon/home/pickup.png' %}"> Pick up your item within 20 minutes      
             </p>
             <p class="mb-4">
-             <img src="{% static 'images/icon/home/package.png' %}"> Professional package		  
-           </p>			  
+             <img src="{% static 'images/icon/home/package.png' %}"> Professional package     
+           </p>       
            <p class="mb-4">
-             <img src="{% static 'images/icon/home/ship.png' %}"> Ship through USPS			  
-           </p>			  
+             <img src="{% static 'images/icon/home/ship.png' %}"> Ship through USPS       
+           </p>       
            <p class="mb-4">
-             <img src="{% static 'images/icon/home/tracking_number.png' %}"> Provide tracking number			  
-           </p>			  
+             <img src="{% static 'images/icon/home/tracking_number.png' %}"> Provide tracking number        
+           </p>       
 
          </div>
        </div>
        <div class="col-md-1">
        </div>
        <div class="col-md-5 relative align-self-center">
-        <form method="POST" id="CustomerRequest" name="CustomerRequest"> {% csrf_token %}		  
+        <form method="POST" id="CustomerRequest" name="CustomerRequest"> {% csrf_token %}     
          <!--1st Form. Pick Up-->
          <div action="#pickup_form" class="bg-white rounded pb_form_v1" id="pickup_form">
           <h3 class="mb-4 mt-0 text-center">Enter pickup address</h3>
@@ -96,16 +96,16 @@
           <div class="form-group">
             <input type="text" class="form-control pb_height-50 reverse" placeholder="Zip code" id="pick_up_zip" name="pick_up_zip">
           </div>
-          <div class="form-group">	<!--Next Button-->
+          <div class="form-group">  <!--Next Button-->
             <span onclick="nextForm('PickUpForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </span>
           </div>
         </div>
 
         <!--2st Form. Return Or Not Question-->
         <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="question_form" style="display:none">
-          <h3 class="mb-4 mt-0 text-center">Is this a return item from an online merchandise store with a prepaid label? (Amazon,eBay...)</h3>			  
-          <div class="form-group">	<!--Next Button-->
-            <span onclick="nextForm('QuestionForm_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </span>			  
+          <h3 class="mb-4 mt-0 text-center">Is this a return item from an online merchandise store with a prepaid label? (Amazon,eBay...)</h3>        
+          <div class="form-group">  <!--Next Button-->
+            <span onclick="nextForm('QuestionForm_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </span>       
             <span onclick="nextForm('QuestionForm_yes')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Yes </span>
           </div>
         </div>
@@ -128,27 +128,27 @@
 
          <!-- 4th Form (Regular). Smaller than shoes/xbox? -->
          <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="is_small_form" style="display:none">
-          <h3 class="mb-4 mt-0 text-center">Is this item smaller than a laptop / pair of shoes and below 70lbs? </h3>			  
-          <div class="form-group">	<!--Next Button-->
-            <span onclick="nextForm('IsSmallForm_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </span>			  
+          <h3 class="mb-4 mt-0 text-center">Is this item smaller than a laptop / pair of shoes and below 70lbs? </h3>       
+          <div class="form-group">  <!--Next Button-->
+            <span onclick="nextForm('IsSmallForm_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </span>        
             <span onclick="nextForm('IsSmallForm_yes')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Yes </span>
           </div>  
         </div>
 
         <!-- 4th Form (Regular). Not Small -->
         <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="is_not_small_form" style="display:none">
-          <h3 class="mb-4 mt-0 text-center">We are currenty not picking up and packaging item that is bigger than this size or heavier than 70lbs</h3>			  
+          <h3 class="mb-4 mt-0 text-center">We are currenty not picking up and packaging item that is bigger than this size or heavier than 70lbs</h3>        
         </div>
 
-        <!-- 5th Form (Regular). Fragile ? -->			
+        <!-- 5th Form (Regular). Fragile ? -->      
         <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="fragile_form" style="display:none">
-          <h3 class="mb-4 mt-0 text-center">Is this item fragile?</h3>			  
-          <div class="form-group">	<!--Next Button-->
-            <span onclick="nextForm('FragileForm_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" name="is_fragile" value="True"> No </span>			  
+          <h3 class="mb-4 mt-0 text-center">Is this item fragile?</h3>        
+          <div class="form-group">  <!--Next Button-->
+            <span onclick="nextForm('FragileForm_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" name="is_fragile" value="True"> No </span>       
             <span onclick="nextForm('FragileForm_yes')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" name="is_fragile" value="False"> Yes </span>
             <input type="text" id="fragile" style="display:none" name="fragile" value="False"> <!-- For Django -->
           </div>  
-        </div>				
+        </div>        
 
         <!--6rd Form (No). Ship To. Regular Ship-->
         <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="shipto_form" style="display:none;">
@@ -171,30 +171,31 @@
           </div>
           <div class="form-group">
             <input type="text" class="form-control pb_height-50 reverse" placeholder="Note (optional)" id="ship_to_note" name="ship_to_note">
-          </div>			  
-          <div class="form-group">	<!--Next Button-->
+          </div>        
+          <div class="form-group">  <!--Next Button-->
             <span onclick="nextForm('ShipToForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </span>
           </div>
         </div>
 
         <!-- 1COMMON Form (Regular). Total cost-->
         <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="total_cost_form" style="display:none">
-          <h3 class="mb-4 mt-0 text-center">Estimate Total Cost</h3><br>		  
+          <h3 class="mb-4 mt-0 text-center">Estimate Total Cost</h3><br>      
           <label class="mb-4 mt-0 text-left">Pick up fee: </label>
-          <label class="mb-4 mt-0 text-right" id="pick_up_fee">0</label><br>	
+          <label class="mb-4 mt-0 text-right" id="pick_up_fee">0</label><br>  
           <label class="mb-4 mt-0 text-left">Package fee: </label>
-          <label class="mb-4 mt-0 text-right" id="package_fee">0</label><br>	  
+          <label class="mb-4 mt-0 text-right" id="package_fee">0</label><br>    
           <label class="mb-4 mt-0 text-left">Fragile item packaging: </label>
-          <label class="mb-4 mt-0 text-right" id="fragile_fee">0</label><br>			  
+          <label class="mb-4 mt-0 text-right" id="fragile_fee">0</label><br>        
           <label class="mb-4 mt-0 text-left">Shipping fee: </label>
           <label class="mb-4 mt-0 text-right" id="shipping_fee">0</label><br>
-          <label class="mb-4 mt-0 text-left" style="font-weight:bold;font-size:22px;" id="total_cost" name="total_cost">Err</label>		  
+          <label class="mb-4 mt-0 text-left" style="font-weight:bold;font-size:22px;" id="total_cost" name="total_cost">Err</label>
+          <h6 class="mb-4 mt-0 text-center" style="font-style:italic;font-size:15px;color:#007bff">Pay when pick up. We accept cash/credit card.</h6>     
           <input type="text" id="cost" style="display:none" name="cost" value="0"> <!-- For Django -->
 
-          <div class="form-group">	<!--Next Button-->
+          <div class="form-group">  <!--Next Button-->
             <span onclick="nextForm('TotalCostForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </span>
-          </div>			  
-        </div>							
+          </div>        
+        </div>              
 
 
         <!-- 3COMMON Form. Verify Phone Number Form-->
@@ -203,8 +204,8 @@
           <label class="empty_field" style="display:none" id="empty_field_enter_code">*Incorrect code</label>
           <div class="form-group">
             <input type="text" class="form-control pb_height-50 reverse" id="verify_code" name="verify_code" placeholder="Enter verification code">
-          </div>	
-          <div class="form-group">	<!--Comfirm Button--> <!-- Verify Phone, then get all the user input and save to db after click this button-->
+          </div>  
+          <div class="form-group">  <!--Comfirm Button--> <!-- Verify Phone, then get all the user input and save to db after click this button-->
             <input type="submit" onclick="nextForm('SubmitForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" style="background-color:#ff2626;border:none;" value="Confirm Pick Up"> 
             <!-- <input type"=submit" value="End Click">-->
           </div>
@@ -213,20 +214,20 @@
         <!-- 4COMMON Form. Final Form-->
         <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="final_form" style="display:none">
           <h2 class="mb-4 mt-0 text-center" style="color:#007bff">Thank you!</h2>
-          <h3 class="mb-4 mt-0 text-center">Your shipper is on the way. We will send you a confirmation text shortly.</h3>	
-        </div>		
+          <h3 class="mb-4 mt-0 text-center">Your shipper is on the way. We will send you a confirmation text shortly.</h3>  
+        </div>    
 
-        <!---RETURN FORM-->	
-        <!-- 1th Form (Return). Amazon? -->		
+        <!---RETURN FORM--> 
+        <!-- 1th Form (Return). Amazon? -->   
         <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="amazon_form" style="display:none">
-          <h3 class="mb-4 mt-0 text-center">Is it a return item from Amazon.com?</h3>			  
-          <div class="form-group">	<!--Next Button-->
-            <span onclick="nextForm('Amazon_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </span>			  
+          <h3 class="mb-4 mt-0 text-center">Is it a return item from Amazon.com?</h3>       
+          <div class="form-group">  <!--Next Button-->
+            <span onclick="nextForm('Amazon_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </span>       
             <span onclick="nextForm('Amazon_yes')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Yes </span>
           </div>  
-        </div>			  
+        </div>        
 
-        <!--2rd Form(Return Amazon). Upload Amazon Return Code. Return Item-->		
+        <!--2rd Form(Return Amazon). Upload Amazon Return Code. Return Item-->    
         <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="amazon_upload_form" style="display:none">
           <h5 class="mb-4 mt-0 text-left">Step 1: Choose "The UPS Store Dropoff" option at Amazon return page.</h5> 
           <img id="amazon_screenshot" src="{% static 'images/screenshot/Amazon_return2.png' %}" style="width:100%;max-width:100px">
@@ -235,42 +236,42 @@
           <div id="myModal" class="modal">
             <img class="modal-content" id="amazon_screenshot_modal">
             <span onclick="document.getElementById(myModal).style.display='none'" class="w3-button w3-display-topright">&times;</span>
-          </div>			  
+          </div>        
 
           <h5 class="mb-4 mt-0 text-left">Step 2: Upload the QR code Amazon sent you.</h5>
           <label class="empty_field" style="display:none" id="empty_field_amazon_qr">*File is missing</label>         
           <div class="form-group">
            <input type="file" class="form-control pb_height-50 reverse" id="amazon_QR">
-         </div>			  
-         <div class="form-group">	<!--Next Button-->
+         </div>       
+         <div class="form-group"> <!--Next Button-->
            <span onclick="nextForm('ReturnAmazonForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </span>
          </div>
-       </div>	
+       </div> 
 
-       <!--2rd Form(Return Normal). Upload Label. Return Item-->		
+       <!--2rd Form(Return Normal). Upload Label. Return Item-->    
        <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="upload_label_form" style="display:none">
         <h3 class="mb-4 mt-0 text-center">Upload return label (prepaid label only)</h3>
         <label class="empty_field" style="display:none" id="empty_field_upload_label">*File is missing</label>
         <div class="form-group">
           <input type="file" class="form-control pb_height-50 reverse" id="return_label_1">
-        </div>	
+        </div>  
         <h3 class="mb-4 mt-0 text-center">Additional document in the package (optional)</h3>
         <div class="form-group">
           <input type="file" class="form-control pb_height-50 reverse" id="return_label_2">
-        </div>			  
-        <div class="form-group">	<!--Next Button-->
+        </div>        
+        <div class="form-group">  <!--Next Button-->
           <span onclick="nextForm('UploadLabelForm')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Next </span>
         </div>
-      </div>	
+      </div>  
 
-      <!-- 3th Form (Return Normal). Repackage? -->		
+      <!-- 3th Form (Return Normal). Repackage? -->   
       <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="repackage_form" style="display:none">
-        <h3 class="mb-4 mt-0 text-center">Do you want to repackaging this item?</h3>			  
-        <div class="form-group">	<!--Next Button-->
-          <span onclick="nextForm('Repackage_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </span>	<!--Ship-->		  
-          <span onclick="nextForm('Repackage_yes')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Yes </span>	<!--Go to fragile form-->	
+        <h3 class="mb-4 mt-0 text-center">Do you want to repackaging this item?</h3>        
+        <div class="form-group">  <!--Next Button-->
+          <span onclick="nextForm('Repackage_no')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> No </span>  <!--Ship-->     
+          <span onclick="nextForm('Repackage_yes')" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue"> Yes </span>  <!--Go to fragile form--> 
         </div>  
-      </div>	
+      </div>  
     </form>
     <!-- 2COMMON Form. Enter Phone Number Form-->
     <form method="POST" id="VerifyPhoneNumber" name="VerifyPhoneNumber"> <!-- {% csrf_token %} -->
@@ -282,7 +283,7 @@
           <input type="text" class="form-control pb_height-50 reverse" id="phone_number" name="phone_number" placeholder="Enter your phone number">
         </div>  
         <div class="form-group">  <!--Next Button-->
-          <input type="submit" onclick="nextForm('EnterPhoneForm')" value="Next" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue">
+          <input type="submit" onclick="nextForm('EnterPhoneForm')" value="Send Verification Code" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue">
           
         </div>
       </div>    

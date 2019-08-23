@@ -14,6 +14,8 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploaded_label')
+MEDIA_URL ="/uploaded_label/"
 #C:\Users\Khanh\khanh_project\flashshipper\src
 
 # Quick-start development settings - unsuitable for production

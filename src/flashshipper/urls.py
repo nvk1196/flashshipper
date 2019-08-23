@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.conf.urls import url
+from django.conf import settings
+from django.views.static import serve 
+
 from Overview.views import home, create_request, verify_phone_number
 #from Overview.views import new_page 
 
@@ -27,3 +31,11 @@ urlpatterns = [
 	#path('new_page.html', new_page),
     path('admin/', admin.site.urls),
 ]
+
+#upload file path. Change this when deploy to server
+if settings.DEBUG:
+    urlpatterns+= [
+        url(r'^uploaded_label/(?P<path>.*)$', serve,{ 
+            'document_root': settings.MEDIA_ROOT,
+        })
+    ]
