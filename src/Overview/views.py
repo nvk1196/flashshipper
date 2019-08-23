@@ -3,6 +3,7 @@ from .models import Customer_Request
 from django.http import HttpResponse
 from send_sms.send_sms import send_text
 from random import randint
+import json
 
 generated_code = ""
 
@@ -74,9 +75,11 @@ def create_request (request):
 				verify_code = generated_code,
 				)	
 			CustomerRequest.save()
+			return HttpResponse(content=json.dumps({"message": True}))
+
 		else:
 			print("---WRONG CODE")		#send an alert in html through js
-	return HttpResponse('')
+			return HttpResponse(content=json.dumps({"message": False}))
 
 def home (request):
 	return render(request, 'home.html')

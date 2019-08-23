@@ -246,16 +246,20 @@ $(document).on('submit', '#CustomerRequest', function(e){
 				ship_to_zip:$('#ship_to_zip').val(),
 				ship_to_note:$('#ship_to_note').val(),
 				cost:$('#cost').val(),
+				// phone number needs to be on its own ajax function
 				phone_number:temp_phone,
 				verify_code:$('#verify_code').val(),
 				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
 			},
-			success:function(){
-				//alert("Created new request " + temp_phone);
-				//$('#phone_number').val('temp_phone');
+			success:function(data){
+				var response = JSON.parse(data)
+				if (response["message"]==false) {
+					alert("Phone number verification failed!");
+					// make sure this will loop the phone number ajax function again and again
+				}
 			}
 		});
-});		
+});
 
 
 
