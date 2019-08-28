@@ -11,32 +11,33 @@ BOX_OPTIONS = (
 )
 
 class Shipper(models.Model):
-	bag_number			= models.IntegerField();								 #each bag is a unique number
+	bag_number			= models.IntegerField(blank=True, null=True)								 #each bag is a unique number
 	shipper_note 		= models.CharField(max_length=300, blank=True, null=True, help_text ="Optional")
-	pickup_time 		= models.DateTimeField(auto_now_add=True)
-	shipper_name	= models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL, editable=False)
+	pickup_time 		= models.DateTimeField(auto_now=True)
+	shipper_name		= models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL, editable=False)
 	def __str__(self):
 		return "Id: " + str(self.id)
 
 class Packager(models.Model):
-	package_time	= models.DateTimeField(auto_now_add=True)
+	package_time	= models.DateTimeField(auto_now=True)
 	size_is_match	= models.BooleanField(blank=True, default=True)
 	box_use			= models.CharField(max_length=100, blank=True, choices=BOX_OPTIONS, help_text ="If box size is not match, then what box used")
 	packager_note 	= models.CharField(max_length=300, blank=True, null=True, help_text ="Optional")
 	packager_name	= models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL, editable=False)
-	tracking_number	= models.CharField(max_length=300, blank=True, null=True, help_text ="They all neeed tracking")
+	tracking_number	= models.CharField(max_length=300, blank=True, default="", null=True, help_text ="They all neeed tracking")
+	phone_number	= models.CharField(max_length=50, blank=True, null=True, editable=False)
 	def __str__(self):
 		return "Id: " + str(self.id)
 
 class Customer_Request(models.Model):
 	#---Shipper fill in---
 	is_picking_up		= models.BooleanField(blank=True, default=False, help_text ="Shipper check this box and save BEFORE leaving to pick up")
-	pick_up_info  		= models.ForeignKey(Shipper, on_delete=models.CASCADE, blank=True, null=True, help_text ="Shipper fill in after pick up")
+	pick_up_info  		= models.OneToOneField(Shipper, on_delete=models.CASCADE, blank=True, null=True, help_text ="Shipper fill in after pick up")
 
 	#--Packager fill in---
-	is_packaged		= models.BooleanField(blank=True, default=False, help_text ="Packager check this box when package item")
-	package_info 	= models.ForeignKey(Packager, on_delete=models.CASCADE, blank=True, null=True, 
-					  help_text ="Packager fill in when package. If none apply, click save anyway")
+	is_packaged			= models.BooleanField(blank=True, default=False, help_text ="Packager check this box when package item")
+	package_info 		= models.OneToOneField(Packager, on_delete=models.CASCADE, blank=True, null=True, 
+						  help_text ="Packager fill in when package. If none apply, click save anyway")
 
 	request_time		= models.DateTimeField(auto_now_add=True)	
 	#how much customer should pay
@@ -63,8 +64,8 @@ class Customer_Request(models.Model):
 	ship_to_zip			= models.CharField(max_length=50, blank=True, null=True)
 	ship_to_note		= models.CharField(max_length=150, blank=True, null=True)
 	#verify customer phone
-	phone_number		= models.CharField(max_length=50, blank=True, null=True)
-	verify_code 		= models.CharField(max_length=10, blank=True, null=True)
+	phone_number		= models.CharField(max_length=50, blank=True, null=True, editable=False)
+	verify_code 		= models.CharField(max_length=10, blank=True, null=True, editable=False)
 
 	def __str__(self):
 		temp = str(self.pick_up_zip) + " " + str(self.pick_up_address) 

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Customer_Request
+from .models import Customer_Request, Shipper, Packager
 from django.http import HttpResponse
 from send_sms.send_sms import send_text
 from django.template.loader import get_template
@@ -54,6 +54,11 @@ def create_request (request):
 			ship_to_note	  = request.POST.get("ship_to_note")
 			cost			  = float(request.POST.get("cost"))
 			phone_number	  = request.POST.get("phone_number")
+
+			package_info_temp = Packager(phone_number = "+1" + phone_number)
+			pick_up_info_temp = Shipper()
+			package_info_temp.save()
+			pick_up_info_temp.save()
 			#create a Request model
 			CustomerRequest   = Customer_Request(
 				pick_up_full_name = pick_up_full_name,
@@ -75,6 +80,8 @@ def create_request (request):
 				cost = cost,
 				phone_number = "+1" + phone_number,
 				verify_code = generated_code,
+				package_info = package_info_temp,
+				pick_up_info = pick_up_info_temp,
 				)	
 			CustomerRequest.save()
 			return HttpResponse(content=json.dumps({"message": True}))
