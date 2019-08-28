@@ -2,7 +2,9 @@ from django.shortcuts import render
 from .models import Customer_Request
 from django.http import HttpResponse
 from send_sms.send_sms import send_text
+from django.template.loader import get_template
 from random import randint
+from django.views.generic import View
 import json
 
 generated_code = ""
@@ -86,3 +88,50 @@ def home (request):
 
 # def new_page (request):
 # 	return render(request, 'new_page.html')
+
+#Printing label generator
+def generate_view (request, customer_request_id, *args, **kwargs):
+	if request.user.is_authenticated:
+		customer_request = Customer_Request.objects.get(id=customer_request_id)
+		context = {
+					"id"  					:customer_request.id,
+					"pick_up_full_name" 	:customer_request.pick_up_full_name,
+					"pick_up_address" 		:customer_request.pick_up_address,
+					"pick_up_city"  		:customer_request.pick_up_city,
+					"pick_up_state"  		:customer_request.pick_up_state,
+					"pick_up_zip"  			:customer_request.pick_up_zip,
+
+					"ship_to_full_name" 	:customer_request.ship_to_full_name,
+					"ship_to_address" 		:customer_request.ship_to_address,
+					"ship_to_city"  		:customer_request.ship_to_city,
+					"ship_to_state"  		:customer_request.ship_to_state,
+					"ship_to_zip"  			:customer_request.ship_to_zip,
+					"ship_to_note"  		:customer_request.ship_to_note,
+		}
+		return render (request, 'print_label.html', context)
+	else:
+		return HttpResponse("<h2>You don't have permission to access this content.<h2>")
+
+		
+
+    # template = get_template('invoice.html')
+    # context = {
+    #     "invoice_id": 123,
+    #     "customer_name": "John Cooper",
+    #     "amount": 1399.99,
+    #     "today": "Today",
+    # }
+    # html = template.render(context)
+    # pdf = render_to_pdf('print_label.html', context)
+    # if pdf:
+    #     response = HttpResponse(pdf, content_type='application/pdf')
+    #     filename = "Invoice_%s.pdf" %("12341231")
+    #     content = "inline; filename='%s'" %(filename)
+    #     download = request.GET.get("download")
+    #     if download:
+    #         content = "attachment; filename='%s'" %(filename)
+    #     response['Content-Disposition'] = content
+    #     return response
+    # return HttpResponse("Not found")
+
+

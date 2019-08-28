@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Print Label</title>
+        <style type="text/css">
+        .print{
+                font-family: Noto Sans, sans-serif;
+                font-size: 24px;
+        }
+
+        .button {
+          background-color: #4CAF50; /* Green */
+          border: none;
+          color: white;
+          text-align: center;
+          display: inline-block;
+          font-size: 16px;
+          border-radius: 3px;
+        }
+        </style>
+    </head>
+    <body>
+
+        <div style="width: 384px; height: 576px;">
+            <label class="print" style="font-style:italic;text-decoration: underline;"> FROM: </label> <br>
+            <label class="print" style="font-weight:bold;"> {{ pick_up_full_name }} </label> <br>
+            <label class="print"> {{ pick_up_address }} apt 432 suit 3 </label> <br>
+            <label class="print"> {{ pick_up_city }} </label> <br>    
+            <label class="print"> {{ pick_up_state }} </label> <br>
+            <label class="print"> {{ pick_up_zip }} </label> <br>
+
+            <label class="print">-------------------</label> <br>
+
+            <label class="print" style="font-style:italic;text-decoration: underline;"> TO: </label> <br>
+            <label class="print" style="font-weight:bold;">{{ ship_to_full_name }} </label> <br>
+            <label class="print"> {{ ship_to_address }} </label> <br>
+            <label class="print"> {{ ship_to_city }} </label> <br>    
+            <label class="print"> {{ ship_to_state }} </label> <br>
+            <label class="print"> {{ ship_to_zip }} </label> <br><br>
+            {% if ship_to_note != None %}
+            <label class="print" style="font-size:17px;font-style:italic;"> Note: {{ ship_to_note }} </label> <br>
+            {% endif %}
+        </div><br><br>
+
+        <!--Search Customer Request ID-->
+        <input type="text" id="customer_request_id" placeholder="Enter Request ID">
+        <button class="button" onclick="myFunction()">Search</button><br>
+        Current ID: {{ id }}
+        <script>
+        var customer_request_id
+        function myFunction() {
+          customer_request_id = document.getElementById("customer_request_id").value;
+          window.open("http://127.0.0.1:8000/print_label/" + customer_request_id, false);
+        }
+        </script>       
+    </body>
+</html>

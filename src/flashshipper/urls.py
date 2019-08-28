@@ -19,17 +19,19 @@ from django.urls import path
 from django.conf.urls import url
 from django.conf import settings
 from django.views.static import serve 
-
-from Overview.views import home, create_request, verify_phone_number
+from Overview.views import home, create_request, verify_phone_number, generate_view
 #from Overview.views import new_page 
 
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
 	path('', home),
     path('create_request', create_request),
     path('verify_phone_number', verify_phone_number),
-	#path('new_page.html', new_page),
-    path('admin/', admin.site.urls),
+    path('print_label/<int:customer_request_id>/', generate_view),       #dynamic url, take customer_request_id as argument 
+
+    #path('new_page.html', new_page),
+
 ]
 
 #upload file path. Change this when deploy to server
