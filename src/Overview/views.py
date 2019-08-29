@@ -3,6 +3,7 @@ from .models import Customer_Request, Shipper, Packager
 from django.http import HttpResponse
 from send_sms.send_sms import send_text
 from django.template.loader import get_template
+from django.views.generic import TemplateView
 from random import randint
 from django.views.generic import View
 import json
@@ -37,6 +38,8 @@ def create_request (request):
 			pick_up_city      = request.POST.get("pick_up_city")
 			pick_up_state     = request.POST.get("pick_up_state")
 			pick_up_zip       = request.POST.get("pick_up_zip")
+			#if request.FILES['amazon_QR']:
+				#amazon_QR         = request.POST.get("amazon_QR")
 			amazon_QR         = request.POST.get("amazon_QR")
 			return_label_1    = request.POST.get("return_label_1")
 			return_label_2    = request.POST.get("return_label_2")
@@ -45,7 +48,7 @@ def create_request (request):
 			if fragile_temp	  == "True":
 				fragile 	  = True
 			elif fragile_temp == "False":
-				fragile 	  = False	
+				fragile 	  = False	 
 			ship_to_full_name = request.POST.get("ship_to_full_name")
 			ship_to_address   = request.POST.get("ship_to_address")
 			ship_to_city 	  = request.POST.get("ship_to_city")

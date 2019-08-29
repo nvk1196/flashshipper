@@ -18,7 +18,8 @@ from django.urls import path
 
 from django.conf.urls import url
 from django.conf import settings
-from django.views.static import serve 
+from django.views.static import serve
+from django.conf.urls.static import static
 from Overview.views import home, create_request, verify_phone_number, generate_view
 #from Overview.views import new_page 
 
@@ -35,9 +36,12 @@ urlpatterns = [
 ]
 
 #upload file path. Change this when deploy to server
+# if settings.DEBUG:
+#     urlpatterns+= [
+#         url(r'^uploaded_label/(?P<path>.*)$', serve,{ 
+#             'document_root': settings.MEDIA_ROOT,
+#         })
+#     ]
+
 if settings.DEBUG:
-    urlpatterns+= [
-        url(r'^uploaded_label/(?P<path>.*)$', serve,{ 
-            'document_root': settings.MEDIA_ROOT,
-        })
-    ]
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

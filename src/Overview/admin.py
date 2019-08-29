@@ -26,7 +26,7 @@ class PackagerAdmin(admin.ModelAdmin):
 		#Send tracking to user when save tracking number at Packager
 		if obj.tracking_number != None:
 			usps_link = "https://tools.usps.com/go/TrackConfirmAction?tLabels="		#tracking services link. http://www.erchov.com/ShipmentTracking.asp
-			message = "Flash Shipper - Your package tracking number is : " + usps_link + str(obj.tracking_number)
+			message = "Flash Shipper - Request ID: " + str(obj.id) + " - Your package tracking number is : " + usps_link + str(obj.tracking_number)
 			send_text(message, obj.phone_number)
 			print("Tracking Number Sent!")
 		obj.save()

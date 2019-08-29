@@ -1,0 +1,27 @@
+--Request--
+String		counter 			(id)
+DateTime 	request_time		(request_time)
+String 		pick_up_address
+Boolean 	return
+Boolean 	amazon
+File 		amazon_QR
+File 		return_label1
+File 		return_label2 
+Boolean 	repackage
+String 		item_size
+Boolean 	fragile
+Number 		cost				(pickup + ship + fragile)
+String		ship_to_address
+
+	--USPS--
+String tracking_number
+
+--Phone verification--
+String tracking_number    		(reference USPS table)	
+String customer_phone_number	(reference Request table)
+
+--Inventory--
+DateTime 	bought_date
+String		box_type 
+Number 		number_bought	
+Number 		money_spent
