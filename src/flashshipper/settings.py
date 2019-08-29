@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploaded_label')
 MEDIA_URL ="/uploaded_label/"
 #C:\Users\Khanh\khanh_project\flashshipper\src
@@ -27,7 +27,7 @@ SECRET_KEY = 'e4-agq3yf5jjp$2vkn)qkr)4(oe3c4((jm5!z8ian20liz2v)6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['flashshipper.pythonanywhere.com', '127.0.0.1']
 
 # Application definition
 
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #my stuff
-    'Overview'    
+    'Overview'
 ]
 
 MIDDLEWARE = [
@@ -123,6 +123,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = '/home/flashshipper/flashshipper/src/static'
 #CSS, Javascript, image, icon directory
 STATICFILES_DIRS = [
 
