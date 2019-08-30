@@ -21,9 +21,9 @@ def generate_rand_code ():
 def verify_phone_number(request):
 	if request.method == "POST":
 		phone_number = request.POST.get("phone_number")
-	#send verify code to user phone
-	message = "Flash Shipper verification code: "
-	send_text(message + generate_rand_code(), phone_number)
+		#send verify code to user phone
+		message = "Flash Shipper verification code: "
+		send_text(message + generate_rand_code(), phone_number)
 	return HttpResponse('') 
 
 def create_request (request): 
