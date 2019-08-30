@@ -275,7 +275,7 @@
       </div>  
     </form>
     <!-- 2COMMON Form. Enter Phone Number Form-->
-    <form method="POST" id="VerifyPhoneNumber" name="VerifyPhoneNumber"> <!-- {% csrf_token %} -->
+    <form method="POST" id="VerifyPhoneNumber" name="VerifyPhoneNumber"> {% csrf_token %} 
       <div action="#pickup_form"" class="bg-white rounded pb_form_v1" id="enter_phone_form" style="display:none">
         <h3 class="mb-4 mt-0 text-center">Verify phone number</h3>
         <h6 class="mb-4 mt-0 text-center" style="font-style:italic;">Your phone number will be use for contacting your shipper and receiving tracking number.</h6>
