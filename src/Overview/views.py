@@ -3,7 +3,7 @@ from .models import Customer_Request, Shipper, Packager
 from django.http import HttpResponse
 from send_sms.send_sms import send_text
 #from django.template.loader import get_template
-#from django.views.generic import TemplateView
+from django.views.generic import TemplateView
 from random import randint
 #from django.views.generic import View
 import json
@@ -21,6 +21,8 @@ def generate_rand_code ():
 def verify_phone_number(request):
 	if request.method == "POST":
 		phone_number = request.POST.get("phone_number")
+		global customer_phone_number
+		customer_phone_number = phone_number
 		#send verify code to user phone
 		message = "Flash Shipper verification code: "
 		send_text(message + generate_rand_code(), phone_number)
@@ -30,7 +32,8 @@ def create_request (request):
 	if request.method == "POST":
 		verify_code = request.POST.get("verify_code")
 		#If the verification code is correct. Create this CustomerRequest and save in db
-		print("---CODE IS-" + generated_code + "-END")
+		print("---GENERATED CODE:" + generated_code + "---")
+		print("---PASS IN CODE:" + verify_code + "---")
 		if verify_code == generated_code:
 			print("---CODE IS CORRECT. IT IS " + verify_code)
 			pick_up_full_name = request.POST.get("pick_up_full_name")	#this get data from ajax data from custom.js
@@ -38,9 +41,14 @@ def create_request (request):
 			pick_up_city      = request.POST.get("pick_up_city")
 			pick_up_state     = request.POST.get("pick_up_state")
 			pick_up_zip       = request.POST.get("pick_up_zip")
-			#if request.FILES['amazon_QR']:
-				#amazon_QR         = request.POST.get("amazon_QR")
-			amazon_QR         = request.POST.get("amazon_QR")
+
+			#request.FILES['amazon_QR', False]
+			amazon_QR		  = request.FILES.get('amazon_QR')
+			print (amazon_QR.name)
+			print (str(amazon_QR.size) + " bytes")
+
+
+			#amazon_QR         = request.POST.get("amazon_QR")
 			return_label_1    = request.POST.get("return_label_1")
 			return_label_2    = request.POST.get("return_label_2")
 			est_item_size	  = request.POST.get("est_item_size")
@@ -56,9 +64,9 @@ def create_request (request):
 			ship_to_zip		  = request.POST.get("ship_to_zip")
 			ship_to_note	  = request.POST.get("ship_to_note")
 			cost			  = float(request.POST.get("cost"))
-			phone_number	  = request.POST.get("phone_number")
+			#phone_number	  = request.POST.get("phone_number")
 
-			package_info_temp = Packager(phone_number = "+1" + phone_number)
+			package_info_temp = Packager(phone_number = "+1" + customer_phone_number)
 			pick_up_info_temp = Shipper()
 			package_info_temp.save()
 			pick_up_info_temp.save()
@@ -81,7 +89,7 @@ def create_request (request):
 				ship_to_zip = ship_to_zip,
 				ship_to_note = ship_to_note,
 				cost = cost,
-				phone_number = "+1" + phone_number,
+				phone_number = "+1" + customer_phone_number,
 				verify_code = generated_code,
 				package_info = package_info_temp,
 				pick_up_info = pick_up_info_temp,

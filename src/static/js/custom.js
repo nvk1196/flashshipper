@@ -208,48 +208,65 @@ if ( window.history.replaceState )
 var temp_phone
 $(document).on('submit', '#VerifyPhoneNumber', function(e){
 	e.preventDefault();
+   	var phone_form_data = new FormData($('#VerifyPhoneNumber')[0]);
 	$.ajax({
 		type:'POST',
 		url:'/verify_phone_number',
-		data:{
-			phone_number:$('#phone_number').val(),
-			csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
-		},
+		contentType: false,
+   		cache: false,
+    	processData: false,
+    	data: phone_form_data,
 		success:function(){
 			temp_phone = $('#phone_number').val();
 				//alert("Sent text sms " + temp_phone);
 			}
 		});
 });
+
 //--Submit form to Django without reload
 $(document).on('submit', '#CustomerRequest', function(e){
 	e.preventDefault();
+
+   	var form_data = new FormData($('#CustomerRequest')[0]);
+   	//form_data.append("amazon_QR", document.getElementById('amazon_QR').files[0]);
+   	//form_data.append("verify_code", document.getElementById('verify_code').value);
+   	//form_data.append("csrfmiddlewaretoken", document.getElementsByName('csrfmiddlewaretoken')[0].value);
 	$.ajax({
 		type:'POST',
 		url:'/create_request',
-		data:{
-				pick_up_full_name:$('#pick_up_full_name').val(),	//This stuff will pass data from html-> views.py
-				pick_up_address:$('#pick_up_address').val(),
-				pick_up_city:$('#pick_up_city').val(),
-				pick_up_state:$('#pick_up_state').val(),
-				pick_up_zip:$('#pick_up_zip').val(),
-				amazon_QR:$('#amazon_QR').val(),
-				return_label_1:$('#return_label_1').val(),
-				return_label_2:$('#return_label_2').val(),
-				est_item_size:$('#est_item_size').val(),
-				fragile:$('#fragile').val(),
-				ship_to_full_name:$('#ship_to_full_name').val(),
-				ship_to_address:$('#ship_to_address').val(),
-				ship_to_city:$('#ship_to_city').val(),
-				ship_to_state:$('#ship_to_state').val(),
-				ship_to_zip:$('#ship_to_zip').val(),
-				ship_to_note:$('#ship_to_note').val(),
-				cost:$('#cost').val(),
-				// phone number needs to be on its own ajax function
-				phone_number:temp_phone,
-				verify_code:$('#verify_code').val(),
-				csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
-			},
+		contentType: false,
+   		cache: false,
+    	processData: false,
+    	data: form_data,
+
+
+
+
+		// data:{
+		// 		pick_up_full_name:$('#pick_up_full_name').val(),	//This stuff will pass data from html-> views.py
+		// 		pick_up_address:$('#pick_up_address').val(),
+		// 		pick_up_city:$('#pick_up_city').val(),
+		// 		pick_up_state:$('#pick_up_state').val(),
+		// 		pick_up_zip:$('#pick_up_zip').val(),
+
+		// 		amazon_QR:$('#amazon_QR').val(),
+		// 		return_label_1:$('#return_label_1').val(),
+		// 		return_label_2:$('#return_label_2').val(),
+
+		// 		est_item_size:$('#est_item_size').val(),
+		// 		fragile:$('#fragile').val(),
+		// 		ship_to_full_name:$('#ship_to_full_name').val(),
+		// 		ship_to_address:$('#ship_to_address').val(),
+		// 		ship_to_city:$('#ship_to_city').val(),
+		// 		ship_to_state:$('#ship_to_state').val(),
+		// 		ship_to_zip:$('#ship_to_zip').val(),
+		// 		ship_to_note:$('#ship_to_note').val(),
+		// 		cost:$('#cost').val(),
+		// 		// phone number needs to be on its own ajax function
+		// 		phone_number:temp_phone,
+		// 		verify_code:$('#verify_code').val(),
+		// 		csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+		// 	},
 			success:function(data){
 				var response = JSON.parse(data)
 				//if user input verification wrong -> error msg and stay in same screen
