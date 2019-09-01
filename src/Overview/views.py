@@ -2,10 +2,10 @@ from django.shortcuts import render
 from .models import Customer_Request, Shipper, Packager
 from django.http import HttpResponse
 from send_sms.send_sms import send_text
-from django.template.loader import get_template
-from django.views.generic import TemplateView
+#from django.template.loader import get_template
+#from django.views.generic import TemplateView
 from random import randint
-from django.views.generic import View
+#from django.views.generic import View
 import json
 
 generated_code = ""
@@ -24,9 +24,9 @@ def verify_phone_number(request):
 		#send verify code to user phone
 		message = "Flash Shipper verification code: "
 		send_text(message + generate_rand_code(), phone_number)
-	return HttpResponse('') 
+	return HttpResponse('')
 
-def create_request (request): 
+def create_request (request):
 	if request.method == "POST":
 		verify_code = request.POST.get("verify_code")
 		#If the verification code is correct. Create this CustomerRequest and save in db
@@ -48,7 +48,7 @@ def create_request (request):
 			if fragile_temp	  == "True":
 				fragile 	  = True
 			elif fragile_temp == "False":
-				fragile 	  = False	 
+				fragile 	  = False
 			ship_to_full_name = request.POST.get("ship_to_full_name")
 			ship_to_address   = request.POST.get("ship_to_address")
 			ship_to_city 	  = request.POST.get("ship_to_city")
@@ -85,7 +85,7 @@ def create_request (request):
 				verify_code = generated_code,
 				package_info = package_info_temp,
 				pick_up_info = pick_up_info_temp,
-				)	
+				)
 			CustomerRequest.save()
 			return HttpResponse(content=json.dumps({"message": True}))
 
@@ -122,7 +122,7 @@ def generate_view (request, customer_request_id, *args, **kwargs):
 	else:
 		return HttpResponse("<h2>You don't have permission to access this content.<h2>")
 
-		
+
 
     # template = get_template('invoice.html')
     # context = {
