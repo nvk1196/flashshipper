@@ -227,7 +227,7 @@ $(document).on('submit', '#VerifyPhoneNumber', function(e){
 $(document).on('submit', '#CustomerRequest', function(e){
 	e.preventDefault();
 
-   	var form_data = new FormData($('#CustomerRequest')[0]);
+   	var form_data = new FormData($('#CustomerRequest')[0]); //get all data from this form
    	//form_data.append("amazon_QR", document.getElementById('amazon_QR').files[0]);
    	//form_data.append("verify_code", document.getElementById('verify_code').value);
    	//form_data.append("csrfmiddlewaretoken", document.getElementsByName('csrfmiddlewaretoken')[0].value);
