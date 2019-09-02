@@ -42,15 +42,12 @@ def create_request (request):
 			pick_up_state     = request.POST.get("pick_up_state")
 			pick_up_zip       = request.POST.get("pick_up_zip")
 
-			#request.FILES['amazon_QR', False]
 			amazon_QR		  = request.FILES.get('amazon_QR')
-			print (amazon_QR.name)
-			print (str(amazon_QR.size) + " bytes")
-
-
-			#amazon_QR         = request.POST.get("amazon_QR")
-			return_label_1    = request.POST.get("return_label_1")
-			return_label_2    = request.POST.get("return_label_2")
+			# print (amazon_QR.name)
+			# print (str(amazon_QR.size) + " bytes")
+			return_label_1    = request.FILES.get("return_label_1")
+			return_label_2    = request.FILES.get("return_label_2")
+			
 			est_item_size	  = request.POST.get("est_item_size")
 			fragile_temp	  = request.POST.get("fragile")			#can't typecast boolean so gotta use this
 			if fragile_temp	  == "True":
