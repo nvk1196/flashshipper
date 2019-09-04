@@ -1,0 +1,5 @@
+1. Need to fix twilio in production setting
+2. Need to change line 21 admin.py to
+        if this_packager.box_use == None:   #Production
+    from
+		if this_packager.box_use == "":     #Server
