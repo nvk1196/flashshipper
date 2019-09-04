@@ -9,7 +9,7 @@ from .models import Customer_Request, Packager, Shipper, Internal_Tool
 
 class Customer_RequestAdmin(admin.ModelAdmin):
 	def show_google_map_url(self, obj):
-		return format_html("<a href='{url}' target={OpenNewTab}>Click here for directions</a>", url= "https://www.google.com/maps/dir//" + 
+		return format_html("<a href='{url}' target={OpenNewTab}>Click here for directions</a>", url= "https://www.google.com/maps/dir//" +
 			   str(obj.pick_up_address) + " " + str(obj.pick_up_city) + " " + str(obj.pick_up_state) + " " + str(obj.pick_up_zip), OpenNewTab="blank")
 
 	show_google_map_url.short_description = "Google Map"
@@ -18,24 +18,29 @@ class Customer_RequestAdmin(admin.ModelAdmin):
 		this_customer_request_id = obj.id
 		this_packager = Packager.objects.get(id=this_customer_request_id)
 		print("----" + str(this_packager.box_use) + "------")
-		if this_packager.box_use == "":
+		#if this_packager.box_use == "":        #LOCALHOST
+		if this_packager.box_use == None:       #PRODUCTION
 			return "Yes"
 		else:
-			return "No" 
+			return "No"
 
-	fieldsets = (		
+	fieldsets = (
+		(None, {
+			"fields": ("is_picking_up",),
+		}),
+
 		("Customer address", {
 			"classes": ("collapse",),
 			"fields": ("pick_up_full_name", "pick_up_address",  "pick_up_state", "pick_up_city", "pick_up_zip", "show_google_map_url"),
-		}), 
+		}),
 
 		("Picking up", {
 			"classes": ("collapse",),
-			"fields": ("is_picking_up", "est_item_size", "cost", "after_pick_up", )
+			"fields": ( "est_item_size", "cost", "after_pick_up", )
 		}),
 		("Packaging", {
 			"classes": ("collapse",),
-			"fields": ("ship_to_full_name", "ship_to_address",  "ship_to_state", "ship_to_city", "ship_to_zip", "ship_to_note", 
+			"fields": ("ship_to_full_name", "ship_to_address",  "ship_to_state", "ship_to_city", "ship_to_zip", "ship_to_note",
 						"amazon_QR", "return_label_1",  "return_label_2", "fragile", "after_package"),
 		}),
 		("Other info", {
@@ -45,10 +50,10 @@ class Customer_RequestAdmin(admin.ModelAdmin):
 	)
 
 	list_display	= ["id", "is_picking_up", "pick_up_zip", "is_packaged"]
-	list_filter 	= ["request_time", "is_picking_up", ] 
+	list_filter 	= ["request_time", "is_picking_up", ]
 	#list_editable	= [""]
 	readonly_fields	= ["request_time", "phone_number", "verify_code", "show_google_map_url",
-						"amazon_QR", "return_label_1",  "return_label_2",]					   
+						"amazon_QR", "return_label_1",  "return_label_2",]
 	search_fields 	= ["pick_up_zip",]
 	#exclude			= ["" ]
 
@@ -57,7 +62,7 @@ class Customer_RequestAdmin(admin.ModelAdmin):
 #"pick_up_full_name", "pick_up_address", "pick_up_city", "pick_up_state", "pick_up_zip",
 #"ship_to_full_name", "ship_to_address", "ship_to_city", "ship_to_state", "ship_to_zip",]
 
-	
+
 
 class PackagerAdmin(admin.ModelAdmin):
 	list_display	= ["id", "package_time", "box_use", "packager_name",]
