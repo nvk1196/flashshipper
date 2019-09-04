@@ -9,7 +9,7 @@ from random import randint
 import json
 
 generated_code = ""
-
+google_map_link = "https://www.google.com/maps/place/"
 def generate_rand_code ():
 	#generate random 4 digits code
 	temp_code = str(randint(1000, 9999))
@@ -63,10 +63,10 @@ def create_request (request):
 			cost			  = float(request.POST.get("cost"))
 			#phone_number	  = request.POST.get("phone_number")
 
-			package_info_temp = Packager(phone_number = "+1" + customer_phone_number)
-			pick_up_info_temp = Shipper()
-			package_info_temp.save()
-			pick_up_info_temp.save()
+			after_package_temp = Packager(phone_number = "+1" + customer_phone_number)
+			after_pick_up_temp = Shipper()
+			after_package_temp.save()
+			after_pick_up_temp.save()
 			#create a Request model
 			CustomerRequest   = Customer_Request(
 				pick_up_full_name = pick_up_full_name,
@@ -88,8 +88,8 @@ def create_request (request):
 				cost = cost,
 				phone_number = "+1" + customer_phone_number,
 				verify_code = generated_code,
-				package_info = package_info_temp,
-				pick_up_info = pick_up_info_temp,
+				after_package = after_package_temp,
+				after_pick_up = after_pick_up_temp,
 				)
 			CustomerRequest.save()
 			return HttpResponse(content=json.dumps({"message": True}))

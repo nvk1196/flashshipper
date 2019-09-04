@@ -123,7 +123,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/home/flashshipper/flashshipper/src/static'
+STATIC_ROOT = '/home/flashshipper/flashshipper/src/collectstaticGoHere'
 #CSS, Javascript, image, icon directory
 STATICFILES_DIRS = [
 
