@@ -18,8 +18,8 @@ class Customer_RequestAdmin(admin.ModelAdmin):
 		this_customer_request_id = obj.id
 		this_packager = Packager.objects.get(id=this_customer_request_id)
 		print("----" + str(this_packager.box_use) + "------")
-		#if this_packager.box_use == "":        #LOCALHOST
-		if this_packager.box_use == None:       #PRODUCTION
+		if this_packager.box_use == "":        #LOCALHOST
+		#if this_packager.box_use == None:       #PRODUCTION
 			return "Yes"
 		else:
 			return "No"

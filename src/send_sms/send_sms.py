@@ -38,30 +38,30 @@ auth_token 		= "9f59fde1d33f14857fbf5615be881388"
 my_phone_number = "+15012632545"	#Twilio gave me this phone number
 
 #--LOCALHOST--
-# from twilio.rest import Client
-# def send_text (my_msg, send_to_phone_number):
-# 	client  = Client(account_sid, auth_token)
-# 	message = client.messages \
-#                 .create(
-#                      body	= my_msg,
-#                      from_	= my_phone_number,
-#                      to		= send_to_phone_number
-#                  )
-# 	print("SMS is sent!")
+from twilio.rest import Client
+def send_text (my_msg, send_to_phone_number):
+	client  = Client(account_sid, auth_token)
+	message = client.messages \
+                .create(
+                     body	= my_msg,
+                     from_	= my_phone_number,
+                     to		= send_to_phone_number
+                 )
+	print("SMS is sent!")
 
 
 #--PRODUCTION--
-import os
-from twilio.rest import Client
-from twilio.http.http_client import TwilioHttpClient
-def send_text (my_msg, send_to_phone_number):
-    proxy_client = TwilioHttpClient()
-    proxy_client.session.proxies = {'https': os.environ['https_proxy']}
-    client = Client(account_sid, auth_token, http_client=proxy_client)
-    # twilio api calls will now work from behind the proxy:
-    message = client.messages.create(to = send_to_phone_number , from_ = my_phone_number, body = my_msg)
-    print("SMS is sent!")
-    print(message.sid)
+# import os
+# from twilio.rest import Client
+# from twilio.http.http_client import TwilioHttpClient
+# def send_text (my_msg, send_to_phone_number):
+#     proxy_client = TwilioHttpClient()
+#     proxy_client.session.proxies = {'https': os.environ['https_proxy']}
+#     client = Client(account_sid, auth_token, http_client=proxy_client)
+#     # twilio api calls will now work from behind the proxy:
+#     message = client.messages.create(to = send_to_phone_number , from_ = my_phone_number, body = my_msg)
+#     print("SMS is sent!")
+#     print(message.sid)
 
 
 
